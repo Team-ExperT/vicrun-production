@@ -4,6 +4,8 @@ db:
     - "5432:5432"
 web:
   build: .
+  volumes:
+    - ./vicsurv-server:/home/app/vicsurv
   ports: 
     - "5780:5780"
   links: 
