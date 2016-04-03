@@ -25,22 +25,22 @@ RUN apt-get install libpq-dev
 RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
 
-ADD config/vicsurv.conf /etc/nginx/sites-enabled/vicsurv.conf
-ADD config/vicsurv-env.conf /etc/nginx/main.d/vicsurv-env.conf
+ADD config/vicrun.conf /etc/nginx/sites-enabled/vicrun.conf
+ADD config/vicrun-env.conf /etc/nginx/main.d/vicrun-env.conf
 
 WORKDIR /tmp
-ADD vicsurv-server/Gemfile /tmp/
-ADD vicsurv-server/Gemfile.lock /tmp/
+ADD vicrun-server/Gemfile /tmp/
+ADD vicrun-server/Gemfile.lock /tmp/
 RUN bundle install
 
-RUN mkdir /home/app/vicsurv
+RUN mkdir /home/app/vicrun
 
 
-ADD vicsurv-server /home/app/vicsurv
-RUN chown -R app:app /home/app/vicsurv
+ADD vicrun-server /home/app/vicrun
+RUN chown -R app:app /home/app/vicrun
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # RUN echo "app    ALL=(ALL)    NOPASSWD:ALL" >> /etc/sudoers.d/app
 # USER app
-WORKDIR /home/app/vicsurv
+WORKDIR /home/app/vicrun

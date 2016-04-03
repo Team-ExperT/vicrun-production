@@ -5,7 +5,7 @@ db:
 web:
   build: .
   volumes:
-    - ./vicsurv-server:/home/app/vicsurv
+    - ./vicrun-server:/home/app/vicrun
   ports: 
     - "5780:5780"
   links: 
