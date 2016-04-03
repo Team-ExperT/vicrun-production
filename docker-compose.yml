@@ -2,6 +2,9 @@ db:
   image: postgres
   ports: 
     - "5432:5432"
+  environment:
+    POSTGRES_USER: vicrun
+    POSTGRES_PASSWORD: vicrun57a
 web:
   build: .
   volumes:
