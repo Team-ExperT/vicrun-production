@@ -5,6 +5,8 @@ db:
   environment:
     POSTGRES_USER: vicrun
     POSTGRES_PASSWORD: vicrun57a
+redis:
+  image: redis
 web:
   build: .
   volumes:
@@ -13,3 +15,4 @@ web:
     - "5780:5780"
   links: 
     - db
+    - redis
